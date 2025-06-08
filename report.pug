@@ -1,0 +1,102 @@
+mixin snapshotDetail(snapshot)
+	.lastDate
+		a(href=`../listing/${snapshot.snapshotDate}/${snapshot.id}.html`)
+			=new Intl.DateTimeFormat("pl-PL", { day: 'numeric', month: 'long' }).format(fn.parseDate(snapshot.snapshotDate))
+	.price= (new Intl.NumberFormat('pl-PL').format(snapshot.price)) + ' ' + (snapshot.currency == 'EUR' ? '€' : 'zł')
+
+doctype html
+html(lang="pl")
+	head
+		meta(charset='utf-8')
+		title= 'Report'
+		link(rel='stylesheet', type='text/css', href=`../report.css?${Math.random()}`)
+	body
+		include chart
+		div#container
+			input(type='checkbox', data-kind='filter', id='showEnded')
+			label(for='showEnded', data-kind='filter') Ended
+			input(type='checkbox', data-kind='filter', id='showBanned')
+			label(for='showBanned', data-kind='filter') Banned
+			input(type='checkbox', data-kind='filter', id='showCrashed')
+			label(for='showCrashed', data-kind='filter') Crashed
+			
+			input(type='radio', data-kind='sort', name='sort', id='priceAsc', value='priceAsc')
+			label(for='priceAsc', data-kind='sort') Price ↑
+			input(type='radio', data-kind='sort', name='sort', id='priceDesc', value='priceDesc')
+			label(for='priceDesc', data-kind='sort') Price ↓
+			input(type='radio', data-kind='sort', name='sort', id='yearAsc', value='yearAsc', checked=true)
+			label(for='yearAsc', data-kind='sort') Year ↑
+			input(type='radio', data-kind='sort', name='sort', id='yearDesc', value='yearDesc')
+			label(for='yearDesc', data-kind='sort') Year ↓
+
+			div(class='auctions')
+				each auction, auctionId in report
+					- var firstSnapshot = auction.snapshots[0]
+					- var lastSnapshot = auction.snapshots.at(-1)
+					- var priceChange = Math.round((lastSnapshot.price - firstSnapshot.price) / firstSnapshot.price * 100)
+					- var banned = auction.banned ? 'banned' : ''
+					- var crashed = auction.crashed ? 'crashed' : ''
+					- var fav = auction.fav ? 'fav' : ''
+					- var dead = auction.dead ? 'dead' : ''
+					- var ended = auction.ended ? 'ended' : ''
+					- var new_ = auction.new ? 'new' : ''
+					- var country = lastSnapshot.country ?? auction.notes?.country;
+					- var className = ['auction', banned, crashed, fav, dead, ended, new_, country].join(' ')
+					- var year = `--year: ${auction.year}`
+					- var price = `--price: ${fn.finalPriceInPln(lastSnapshot.price, lastSnapshot.currency)}`
+					- var style = [year, price].join('; ')
+					- var age = Math.floor(fn.age(fn.parseDate(firstSnapshot.snapshotDate)) / (356/2) * 100);
+					- var firstAuction = fn.parseDate(firstSnapshot.snapshotDate).toRelative({ locale: 'pl-PL'})
+					- var currency = lastSnapshot.currency == 'EUR' ? '€' : 'zł'
+					- var finalPrice = lastSnapshot.currency == 'EUR' ? ` ≈ ${new Intl.NumberFormat('pl-PL').format(fn.finalPriceInPln(lastSnapshot.price, lastSnapshot.currency))} zł` : ''
+					div(class=className, style=style, data-price-drop=priceChange < 0, data-price-rise=priceChange > 0)
+						- var snapshots = auction.snapshots.toReversed()
+						a(class='otomotoAuctionLink', href=lastSnapshot.url, target='_blank', style="--background: url('" + lastSnapshot.imgUrls[0] + "')" )
+						.age(style=`--first-auction: '${firstAuction}'; --age: ${age}%`)
+							| #{firstAuction}
+						.header
+							.title
+								- var damages = auction?.notes?.damage?.map(d => `--${d.replaceAll(' ', '-')}: var(--damage)`).join('; ').replace('--airbags: var(--damage)', '--airbags: var(--airbags-damage); --airbags-opacity: 1')
+								- var damagesDesc = auction?.notes?.damage?.join(', ')
+								- var prices = auction?.notes?.price
+								details 
+									summary
+										div(class='car', style=damages, title=damagesDesc)
+											include car.svg
+										- var warnings = auction?.notes?.warning?.join("\n")
+										div(class='warning', title=warnings): span='⚠️'
+										div.year= auction.year
+								.notes
+									if damagesDesc
+										.damage= damagesDesc
+									if warnings
+										.warning= warnings
+									if prices
+										.prices
+											each price, currency in prices
+												- var priceValue = price.value ? new Intl.NumberFormat('pl-PL').format(price.value) : '?'
+												div= `${priceValue}${currency == 'USD' ? '$' : 'zł'} ${price.date || ''} `
+							.priceChange
+								| #{priceChange}%
+						.locationVin
+							.location= lastSnapshot.location
+							a.vin(href=`https://www.google.com/search?q=${auction.vin}`, target='_blank')
+								| #{(auction.vin || '').toUpperCase()}
+						.details
+							.mileage= lastSnapshot.mileage
+							.price= (new Intl.NumberFormat('pl-PL').format(lastSnapshot.price)) + ` ${currency}` + finalPrice
+						.notes
+							div
+
+						.history(style=`--snapshots-count: ${snapshots.length-1};`)
+							- var chronos = snapshots.toReversed().map(s => ({ date: s.snapshotDate, price: s.price, currency: s.currency }))
+							+chart(auctionId, scale, chronos, fn)
+							details
+								summary.snapshot
+									+ snapshotDetail(snapshots[0])
+							.snapshots
+								each snapshot, index in snapshots.splice(1)
+									.snapshot
+										+ snapshotDetail(snapshot)
+								
+
