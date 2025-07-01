@@ -14,7 +14,12 @@
         "crashed_urls": [],
         "fav_urls": [],
         "dead_urls": [],
-        "relisted_urls": [],
+        "relisted_urls": [
+            [
+                "https://www.otomoto.pl/osobowe/oferta/mazda-6-2-5-skyactiv-g-salon-polska-serwis-aso-automat-skora-navi-ID6Hq88r.html",
+                "https://www.otomoto.pl/osobowe/oferta/mazda-6-2-5-skyactiv-g-salon-polska-serwis-aso-automat-skora-navi-ID6HuJtf.html"
+            ]
+        ],
         "vins": {},
         "notes": {}
     }
