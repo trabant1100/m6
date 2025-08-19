@@ -166,16 +166,19 @@ async function getAuctionDetails(url, { kind, mobileItemId }) {
 	
 	return new Promise(resolve => {
 		const $ = cheerio.load(data);
-		let year, title, description, fullDescription, price, currency, date, id, imgUrls;
+		let year, title, description, fullDescription, price, priceTargeting, currency, date, id, imgUrls;
 
 		if (kind == 'otomoto') {
-			const advert = JSON.parse($('#__NEXT_DATA__').eq(0).text()).props.pageProps.advert;
+			const pageProps = JSON.parse($('#__NEXT_DATA__').eq(0).text()).props.pageProps;
+			const advert = pageProps.advert;
 
 			year = parseInt(advert.parametersDict.year.values[0].value);
 			title = advert.title;
 			description = '';
 			fullDescription = advert.description;
 			price = advert.price.value;
+			priceTargeting = (pageProps.baseTargeting?.price[0].split('-') ?? [null, null])
+				.reduce((acc, value, idx) => Object.defineProperty(acc, idx ? 'max' : 'min', { value, enumerable: true }), {});
 			date = new Intl.DateTimeFormat('pl-PL', { dateStyle: 'long', timeStyle: 'short' })
 				.format(new Date(advert.createdAt));
 			id = advert.id;
@@ -195,7 +198,7 @@ async function getAuctionDetails(url, { kind, mobileItemId }) {
 			imgUrls = ad.data.ad.galleryImages.map(p => p.srcSet.split(', ').at(-1).replace(/ .*$/, ''));
 		}
 
-		resolve({ year, title, description, fullDescription, price, currency, date, id, imgUrls });
+		resolve({ year, title, description, fullDescription, price, priceTargeting, currency, date, id, imgUrls });
 	});
 }
 

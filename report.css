@@ -449,6 +449,26 @@ input[type=radio] {
 	text-align: right;
 }
 
+.price {
+	display: flex;
+	justify-content: flex-end;
+}
+
+
+.price .priceTargeting[data-high-price] {
+	--price-targeting-color: crimson;
+}
+
+.price .priceTargeting {
+	--price-targeting-color: darkgreen;
+	align-self: center;
+	aspect-ratio: 2/1;
+  	background: conic-gradient( from 270deg at 50% 100%, var(--price-targeting-color) 0deg var(--price-deg), lightgray var(--price-deg) 75deg);
+  	border-radius: 1.2em 1.2em 0 0;
+  	margin: 0 .2em .2cap 0;
+  	height: 1.2cap;
+}
+
 .snapshot {
 	color: #777;
 	display: grid;

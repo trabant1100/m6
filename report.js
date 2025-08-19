@@ -14,7 +14,7 @@ const today = process.argv[2] ?? DateTime.now().toFormat(DATE_FORMAT);
 	const report = await generateReport(today, relistedUrls, vins, normalizeNotes(notes), listingDir, { bannedUrls, crashedUrls, favUrls, deadUrls });
 	console.log('Writing report json');
 	await fs.mkdir(reportDir, { recursive: true });
-	await fs.writeFile(`${reportDir}/${today}.json`, JSON.stringify(report, null));
+	await fs.writeFile(`${reportDir}/${today}.json`, JSON.stringify(report, null, 2));
 
 	const html = await createHtml(normalizeReport(report), listingDir, { bannedUrls, crashedUrls, favUrls, deadUrls });
 	console.log('Writing report html');
@@ -31,6 +31,12 @@ function normalizeReport(report) {
 		auction.year = auction.snapshots.at(-1).year ?? 2020;
 		for (const snapshot of auction.snapshots) {
 			snapshot.price = Number.parseInt(snapshot.price.replace(' ', ''));
+			if (snapshot.priceTargeting) {
+				snapshot.priceTargeting = {
+					price: parseInt(snapshot.price),
+					...Object.fromEntries(Object.entries(snapshot.priceTargeting).map(([k, v]) => [k, parseInt(v)]))
+				}
+			}
 		}
 	}
 
@@ -190,7 +196,11 @@ async function createHtml(report, listingDir, { bannedUrls, crashedUrls, favUrls
 
 	fn.finalPriceInPln = function(price, currency) {
 		return currency == 'EUR' ? Math.round(parseInt(price) * 4.2 * 1.093) : price;
-	}
+	};
+
+	fn.clamp = function(number, minimum, maximum) {
+		return Math.min(Math.max(number, minimum), maximum);
+	};
 
 	return pugger( { report, bannedUrls, crashedUrls, favUrls, deadUrls, scale, fn } );
 }
