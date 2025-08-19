@@ -8,6 +8,10 @@
   "description": "",
   "fullDescription": "<p>Auto wykupione z leasingu, nowy akumulator, nowy katalizator, nowe mechanizmy lusterek.</p><p>Serwisowany - ASO Mazda Długołęka</p><p>Kolor - Machine Gray</p><p>Tapicerka - czarna skóra</p><p>Wentylowane przednie fotele</p><p>Nagłośnienie - BOSE</p><p>Mazda Assistance - do 11.2025</p><p>Kpl. zimowych opon</p>",
   "price": "79000",
+  "priceTargeting": {
+    "min": "65000",
+    "max": "80000"
+  },
   "date": "6 sierpnia 2025 18:17",
   "id": "6139721638",
   "imgUrls": [

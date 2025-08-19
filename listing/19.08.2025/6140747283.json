@@ -8,6 +8,10 @@
   "description": "",
   "fullDescription": "<p>Na sprzedaż moja prywatna mazda 6 z najlepszym silnikiem 2.5l w benzynie. Jest to bardzo trwała jednostka z bardzo dobrą kulturą pracy. (Żadnych problemów przez cały okres użytkowania). Jestem drugim jego właścicielem od dobrych 3 lat i od 50 tys km. Sprzedaję gdyż średnio co 3 lata zmieniam auto. Z tego modelu byłem bardzo zadowolony i wybór padł znowu na mazdę ale cx5 z takim samym silnikiem i wyposażeniem, mogę bardzo polecić tą opcję. Auto już nie jest na gwarancji ale było serwisowane do 2023 roku w aso. Oczywiście wszystkie płyny wymieniane nadal na bieżąco. Auto umierkowanie eksploatowane co świadczy o tym oryginalny przebieg tylko 88 tyś km, więc spokojnie posłuży jeszcze bezproblemowo na bardzo długi czas. W razie pytań proszę dzwonić</p>",
   "price": "94000",
+  "priceTargeting": {
+    "min": "80000",
+    "max": "100000"
+  },
   "date": "12 sierpnia 2025 13:17",
   "id": "6140747283",
   "imgUrls": [

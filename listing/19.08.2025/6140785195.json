@@ -8,6 +8,10 @@
   "description": "",
   "fullDescription": "<p>Na sprzedaż Mazda 6 w wersji kombi z 2017 roku. Samochód kupiłem w maju 2025 roku jako drugi właściciel – auto pochodzi z polskiego salonu i do momentu zakupu było serwisowane wyłącznie w ASO.</p><p><br></p><p>Sprzedaję z powodów zawodowych – zmieniłem pracę i otrzymałem samochód służbowy, dlatego prywatne auto stało się zbędne.</p><p><br></p><p>Stan techniczny i wizualny oceniam na idealny. Auto zadbane, regularnie serwisowane, bezwypadkowe i gotowe do jazdy.</p><p><br></p><p>Sprzedaż na podstawie umowy kupna-sprzedaży.</p>",
   "price": "79900",
+  "priceTargeting": {
+    "min": "65000",
+    "max": "80000"
+  },
   "date": "13 sierpnia 2025 16:50",
   "id": "6140785195",
   "imgUrls": [

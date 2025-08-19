@@ -8,6 +8,10 @@
   "description": "",
   "fullDescription": "<p>Sprzedam Mazda 6 2015 2.5l 192KM Kombi</p><p>Full opcja, bez szyberdachu</p><p>jestem pierwszym właścicielem i jedynym kierowcą,</p><p>zakupiony w salonie,</p><p>do 6 roku serwisowany w ASO, później serwis Mitusumaniacy.</p><p>auto dodatkowo wygłuszone matami</p><p>sprzedaż na fakturę vat 23%</p><p>zapraszam do oglądania Warszawa, ul. Jacka Odrowąża 15</p>",
   "price": "59040",
+  "priceTargeting": {
+    "min": "50000",
+    "max": "65000"
+  },
   "date": "7 sierpnia 2025 09:55",
   "id": "6138804439",
   "imgUrls": [

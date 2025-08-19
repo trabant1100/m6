@@ -8,6 +8,10 @@
   "description": "",
   "fullDescription": "<p>Witam na sprzedaż mazda 6 combi , rok 2016,  2,5 benzyna , jesteśmy pierwszymi właścicielami , auto zakupione w polskim salonie. Stan auta uważam na bardzo dobry, delikatne ślady użytkowania. </p><p>Pozdrawiam </p>",
   "price": "69000",
+  "priceTargeting": {
+    "min": "65000",
+    "max": "80000"
+  },
   "date": "4 lipca 2025 20:17",
   "id": "6139661776",
   "imgUrls": [

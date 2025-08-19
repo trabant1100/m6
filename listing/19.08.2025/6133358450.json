@@ -8,6 +8,10 @@
   "description": "",
   "fullDescription": "<p><b>Mazda 6 2.5 SkyPassion</b></p><p>Na sprzedaż wyjątkowa Mazda 6 w wersji SkyPassion z dynamicznym i niezawodnym silnikiem benzynowym 2.5 o mocy 192 KM. Rok produkcji: 2017, przebieg: 164 000 km. Samochód w kolorze czarnym, który idealnie podkreśla elegancki i nowoczesny design Mazdy 6.</p><p><br></p><p><b>Technologia i bezpieczeństwo:</b></p><p>• adaptacyjny tempomat, system monitorowania martwego pola, asystent pasa ruchu, rozpoznawanie znaków drogowych).</p><p>• LED-owe reflektory</p><p>• kamera cofania i czujniki parkowania przód/tył.</p><p><b>Komfort i wnętrze:</b></p><p>• skórzana tapicerka w idealnym stanie.</p><p>• podgrzewane fotele przednie i tylne</p><p>• podgrzewana kierownica.</p><p>• elektrycznie regulowane fotele z pamięcią ustawień.</p><p>• system multimedialny z nawigacją.</p><p>• system nagłośnienia BOSE.</p><p>• manetki zmiany biegów przy kierownicy</p><p><b>Wygląd i detale:</b></p><p>• oryginalne 19-calowe alufelgi</p><p>• przyciemniane szyby</p><p><b>Stan techniczny i serwisowy:</b></p><p>Olej wymieniony przy przebiegu 163 000 km.</p><p>Samochód po wymianie tarcz i klocków hamulcowych z przodu przy przebiegu 157 000 km.</p><p>Przy przebiegu 144 000 km w ASO Mazdy został wymieniony olej w skrzyni biegów.</p><p><br></p><p><b>Dodatkowe informacje:</b></p><p>• Idealny samochód zarówno na dłuższe trasy, jak i codzienne użytkowanie</p><p>• Możliwość sprawdzenia w wybranej stacji diagnostycznej</p><p><br></p><p>Cena: <b>74 900 </b>PLN, wystawiam fakturę VAT marża</p><p><br></p><p>Zapraszam do obejrzenia i jazdy próbnej!</p><p>Samochód w ciągłej eksploatacji, przebieg może ulec zmianie</p>",
   "price": "74900",
+  "priceTargeting": {
+    "min": "65000",
+    "max": "80000"
+  },
   "date": "18 sierpnia 2025 15:56",
   "id": "6133358450",
   "imgUrls": [

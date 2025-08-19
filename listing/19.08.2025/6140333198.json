@@ -8,6 +8,10 @@
   "description": "",
   "fullDescription": "<p>Witam!</p><p><br></p><p>Do sprzedania Mazda 6 w full opcji w stanie bardzo dobrym. Nigdy nie brała udziału w kolizji ani wypadku. Użytkowana wyłącznie w zakresie prywatnym, zakupiona w salonie Mazda Jaremko jako auto używane. Auto serwisowane na bieżąco, w ciągłym użytkowaniu. W cenie zakupu komplet kół zimowych z felgami 17\". Zainteresowanych proszę o kontakt telefoniczny.</p>",
   "price": "55000",
+  "priceTargeting": {
+    "min": "50000",
+    "max": "65000"
+  },
   "date": "27 lipca 2025 21:52",
   "id": "6140333198",
   "imgUrls": [

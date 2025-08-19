@@ -8,6 +8,10 @@
   "description": "",
   "fullDescription": "<p>Rok produkcji: 2019</p><p>2,5 benzyna 194KM</p><p>nr rej.: GS7007E</p><p>data I rej.: 08.05.2019</p><p>aktualny przebieg: 109000</p><p><br></p><p>Serwisowany corocznie w Mazda Goworowski.</p><p><br></p><p>Polisa OC do 22/05/2026</p><p>Badanie techniczne do 23/05/2027</p><p><br></p><p>Założony hak z adnotacją w dowodzie rejestracyjnym.</p><p><br></p><p>Auto miało dwa miesiące temu wymianę dynamiczną oleju w skrzyni biegów oraz wymianę akumulatora w serwisie.</p>",
   "price": "106000",
+  "priceTargeting": {
+    "min": "100000",
+    "max": "200000"
+  },
   "date": "8 sierpnia 2025 13:57",
   "id": "6140673519",
   "imgUrls": [

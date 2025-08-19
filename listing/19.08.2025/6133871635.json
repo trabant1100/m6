@@ -8,6 +8,10 @@
   "description": "",
   "fullDescription": "<p>Na sprzedaż rodzinne auto z najlepszą jednostką w tym modelu.Polski salon.</p><p>Wszystko sprawne i serwisowane cały czas w serwisie Mazda Wróbel.</p><p>Chętnych zapraszam do kontaktu i wtedy udzielę wszystkich informacji.</p><p>Zapraszam</p>",
   "price": "95500",
+  "priceTargeting": {
+    "min": "80000",
+    "max": "100000"
+  },
   "date": "9 sierpnia 2025 06:16",
   "id": "6133871635",
   "imgUrls": [
