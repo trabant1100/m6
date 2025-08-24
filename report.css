@@ -50,6 +50,11 @@ input[type=radio] {
 	display: flex;
 }
 
+#container input[type=checkbox],
+#container select {
+	border-radius: 0;
+}
+
 #container input[type=checkbox]:checked::before,
 #container input[type=radio]:checked::before {
 	
@@ -108,20 +113,40 @@ input[type=radio] {
 	--display-crashed: flex;
 }
 
-#priceAsc:checked ~ .auctions .auction {
+select {
+	background: transparent;
+	border: .1em solid #777;
+	color: black;
+	font-size: var(--font-size);
+	outline: none;
+}
+
+#sort {
+	grid-column: 1/4;
+}
+
+#sort:has( > option[value="priceAsc"]:checked) ~ .auctions .auction {
 	--order: var(--price);
 }
 
-#priceDesc:checked ~ .auctions .auction {
+#sort:has( > option[value="priceDesc"]:checked) ~ .auctions .auction {
 	--order: calc(var(--price) * -1);
 }
 
-#yearAsc:checked ~ .auctions .auction {
+#sort:has( > option[value="yearAsc"]:checked) ~ .auctions .auction {
 	--order: var(--year);
 }
 
-#yearDesc:checked ~ .auctions .auction {
+#sort:has( > option[value="yearDesc"]:checked) ~ .auctions .auction {
 	--order: calc(var(--year) * -1);
+}
+
+#sort:has( > option[value="mileageAsc"]:checked) ~ .auctions .auction {
+	--order: var(--mileage);
+}
+
+#sort:has( > option[value="mileageDesc"]:checked) ~ .auctions .auction {
+	--order: calc(var(--mileage) * -1);
 }
 
 .auctions {

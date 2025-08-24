@@ -32,14 +32,13 @@ html(lang="pl")
 			input(type='checkbox', data-kind='filter', id='showCrashed')
 			label(for='showCrashed', data-kind='filter') Crashed
 			
-			input(type='radio', data-kind='sort', name='sort', id='priceAsc', value='priceAsc')
-			label(for='priceAsc', data-kind='sort') Price ↑
-			input(type='radio', data-kind='sort', name='sort', id='priceDesc', value='priceDesc')
-			label(for='priceDesc', data-kind='sort') Price ↓
-			input(type='radio', data-kind='sort', name='sort', id='yearAsc', value='yearAsc', checked=true)
-			label(for='yearAsc', data-kind='sort') Year ↑
-			input(type='radio', data-kind='sort', name='sort', id='yearDesc', value='yearDesc')
-			label(for='yearDesc', data-kind='sort') Year ↓
+			select(data-kind='sort', id='sort')
+				option(value='priceAsc') Price ↑
+				option(value='priceDesc') Price ↓
+				option(value='yearAsc') Year ↑
+				option(value='yearDesc') Year ↓
+				option(value='mileageAsc') Mileage ↑
+				option(value='mileageDesc') Mileage ↓
 
 			div(class='auctions')
 				each auction, auctionId in report
@@ -56,7 +55,8 @@ html(lang="pl")
 					- var className = ['auction', banned, crashed, fav, dead, ended, new_, country].join(' ')
 					- var year = `--year: ${auction.year}`
 					- var price = `--price: ${fn.finalPriceInPln(lastSnapshot.price, lastSnapshot.currency)}`
-					- var style = [year, price].join('; ')
+					- var mileage = `--mileage: ${Number.parseInt(lastSnapshot.mileage.replace(' ', ''))}`
+					- var style = [year, price, mileage].join('; ')
 					- var age = Math.floor(fn.age(fn.parseDate(firstSnapshot.snapshotDate)) / (356/2) * 100);
 					- var firstAuction = fn.parseDate(firstSnapshot.snapshotDate).toRelative({ locale: 'pl-PL'})
 					- var currency = lastSnapshot.currency == 'EUR' ? '€' : 'zł'
