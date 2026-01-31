@@ -78,13 +78,12 @@ const onlyYear = process.argv[2];
 				const thumbnailUrl = jqDivs.eq(0).find('img').attr('src');
 				const url = jqDivs.find('a').eq(0).attr('href');
 				const mileage = jqDivs.eq(2).children('dl').eq(0).children('dd').eq(0).text();
-				const location = jqDivs.eq(2).children('dl').eq(1).children('dd').eq(0).children('p').text();
 
 				if (thumbnailUrl && url) {
 					console.log(`Getting details of auction #${auctionIdx + 1}`);
 					try {
 					  const details = await getAuctionDetails(url, { kind });
-					  const auction = { thumbnailUrl, url, mileage, location, ...details };
+					  const auction = { thumbnailUrl, url, mileage, ...details };
 					  auctions.push(auction);
 					} catch (e) {
 					  console.error(`Error auction #${auctionIdx + 1}: ${e}`);
@@ -172,6 +171,7 @@ async function getAuctionDetails(url, { kind, mobileItemId }) {
 			const pageProps = JSON.parse($('#__NEXT_DATA__').eq(0).text()).props.pageProps;
 			const advert = pageProps.advert;
 
+			location = advert.seller?.location?.shortAddress;
 			year = parseInt(advert.parametersDict.year.values[0].value);
 			title = advert.title;
 			description = '';
@@ -198,7 +198,7 @@ async function getAuctionDetails(url, { kind, mobileItemId }) {
 			imgUrls = ad.data.ad.galleryImages.map(p => p.srcSet.split(', ').at(-1).replace(/ .*$/, ''));
 		}
 
-		resolve({ year, title, description, fullDescription, price, priceTargeting, currency, date, id, imgUrls });
+		resolve({ location, year, title, description, fullDescription, price, priceTargeting, currency, date, id, imgUrls });
 	});
 }
 
